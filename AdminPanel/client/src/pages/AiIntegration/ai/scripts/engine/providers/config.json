@@ -1,0 +1,18 @@
+[
+	"openai",
+	"google-gemini",
+	"anthropic",
+	"xAI",
+	"stabilityai",
+	"deepseek",
+	"mistral",
+	
+	"together.ai",
+	"groq",
+
+	"ollama",
+	"lmstudio",
+	"gpt4all",
+
+	"zhipu"
+]
