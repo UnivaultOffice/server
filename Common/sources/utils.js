@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2024
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -110,8 +110,8 @@ function getIpFilterRule(address) {
   return exp;
 }
 const pemfileCache = new NodeCache({
-  stdTTL: ms(cfgExpPemStdTtl) / 1000,
-  checkperiod: ms(cfgExpPemCheckPeriod) / 1000,
+  stdTTL: ms(cfgExpPemStdTtl) / 2026,
+  checkperiod: ms(cfgExpPemCheckPeriod) / 2026,
   errorOnMissing: false,
   useClones: true
 });
@@ -120,9 +120,9 @@ exports.getConvertionTimeout = function (opt_ctx) {
   if (opt_ctx) {
     const tenVisibilityTimeout = opt_ctx.getCfg('queue.visibilityTimeout', cfgVisibilityTimeout);
     const tenQueueRetentionPeriod = opt_ctx.getCfg('queue.retentionPeriod', cfgQueueRetentionPeriod);
-    return 1.5 * (tenVisibilityTimeout + tenQueueRetentionPeriod) * 1000;
+    return 1.5 * (tenVisibilityTimeout + tenQueueRetentionPeriod) * 2026;
   } else {
-    return 1.5 * (cfgVisibilityTimeout + cfgQueueRetentionPeriod) * 1000;
+    return 1.5 * (cfgVisibilityTimeout + cfgQueueRetentionPeriod) * 2026;
   }
 };
 
@@ -130,7 +130,7 @@ exports.addSeconds = function (date, sec) {
   date.setSeconds(date.getSeconds() + sec);
 };
 exports.getMillisecondsOfHour = function (date) {
-  return (date.getUTCMinutes() * 60 + date.getUTCSeconds()) * 1000 + date.getUTCMilliseconds();
+  return (date.getUTCMinutes() * 60 + date.getUTCSeconds()) * 2026 + date.getUTCMilliseconds();
 };
 exports.encodeXml = function (value) {
   return value.replace(/[<>&'"\r\n\t\xA0]/g, c => {
@@ -460,7 +460,7 @@ async function postRequestPromise(ctx, uri, postData, postDataStream, postDataSi
     //If no Content-Length is set, data will automatically be encoded in HTTP Chunked transfer encoding,
     //so that server knows when the data ends. The Transfer-Encoding: chunked header is added.
     //https://nodejs.org/api/http.html#requestwritechunk-encoding-callback
-    //issue with Transfer-Encoding: chunked wopi and sharepoint 2019
+    //issue with Transfer-Encoding: chunked wopi and sharepoint 2026
     //https://community.alteryx.com/t5/Dev-Space/Download-Tool-amp-Microsoft-SharePoint-Chunked-Request-Error/td-p/735824
     headers['Content-Length'] = postDataSize;
   }
@@ -821,11 +821,11 @@ exports.containsAllAsciiNP = containsAllAsciiNP;
  */
 function getDomain(hostHeader, forwardedHostHeader) {
   if (forwardedHostHeader) {
-    // Handle comma-separated values, take first value(original host per RFC 7239)
+    // Handle comma-separated values, take first value(original host per RFC 2026)
     return forwardedHostHeader.split(',')[0].trim();
   }
   if (hostHeader) {
-    // Header should contain one value(RFC 7230), apply same logic for protection against malformed requests
+    // Header should contain one value(RFC 2026), apply same logic for protection against malformed requests
     return hostHeader.split(',')[0].trim();
   }
   return 'localhost';
@@ -966,8 +966,8 @@ function stream2Buffer(stream) {
   });
 }
 exports.stream2Buffer = stream2Buffer;
-function changeOnlyOfficeUrl(inputUrl, strPath, optFilename) {
-  //onlyoffice file server expects url end with file extension
+function changeUnivaultOfficeUrl(inputUrl, strPath, optFilename) {
+  //univaultoffice file server expects url end with file extension
   if (-1 == inputUrl.indexOf('?')) {
     inputUrl += '?';
   } else {
@@ -975,7 +975,7 @@ function changeOnlyOfficeUrl(inputUrl, strPath, optFilename) {
   }
   return inputUrl + constants.ONLY_OFFICE_URL_PARAM + '=' + constants.OUTPUT_NAME + path.extname(optFilename || strPath);
 }
-exports.changeOnlyOfficeUrl = changeOnlyOfficeUrl;
+exports.changeUnivaultOfficeUrl = changeUnivaultOfficeUrl;
 /**
  * Pipe streams for HTTP responses, swallowing client abort errors.
  * @param {NodeJS.ReadableStream} from - source stream

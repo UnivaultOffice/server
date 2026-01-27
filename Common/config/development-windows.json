@@ -57,7 +57,7 @@
         "type": "mysql",
         "dbPort": 3306,
         "dbUser": "root",
-        "dbPass": "onlyoffice"
+        "dbPass": "univaultoffice"
       },
       "request-filtering-agent": {
         "allowPrivateIPAddress": true,

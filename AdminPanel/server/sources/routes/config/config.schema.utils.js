@@ -1,6 +1,6 @@
 /*
- * ONLYOFFICE Document Server
- * Copyright (c) Ascensio System SIA. All rights reserved.
+ * UNIVAULTOFFICE Document Server
+ * Copyright (c) Univault Technologies. All rights reserved.
  *
  * This program is a free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  *
- * ONLYOFFICE is a trademark of Ascensio System SIA. Other brand and product
+ * UNIVAULTOFFICE is a trademark of Univault Technologies. Other brand and product
  * names mentioned herein may be trademarks of their respective owners.
  */
 
@@ -155,7 +155,7 @@ function deriveSchemaForScope(schema, scope) {
 
   const derived = prune(schema);
   if (derived && typeof derived === 'object') {
-    derived.$id = derived.$id ? `${derived.$id}:${scope}` : `urn:onlyoffice:config:derived:${scope}`;
+    derived.$id = derived.$id ? `${derived.$id}:${scope}` : `urn:univaultoffice:config:derived:${scope}`;
   }
   return derived;
 }

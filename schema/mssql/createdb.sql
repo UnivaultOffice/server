@@ -4,10 +4,10 @@
 --   - DROP TABLE IF EXISTS (SQL Server 2016+)
 --   - Data compression (SQL Server 2008 R2+)
 
--- CREATE DATABASE onlyoffice;
+-- CREATE DATABASE univaultoffice;
 -- GO
 
--- USE onlyoffice;
+-- USE univaultoffice;
 -- GO
 
 -- SQL Server Configuration Parameters

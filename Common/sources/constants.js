@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2024
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -273,29 +273,29 @@ exports.REDIS_KEY_SHUTDOWN = 'shutdown';
 exports.REDIS_KEY_LICENSE = 'license';
 exports.REDIS_KEY_LICENSE_T = 'licenseT';
 
-exports.SHUTDOWN_CODE = 4001;
+exports.SHUTDOWN_CODE = 2026;
 exports.SHUTDOWN_REASON = 'server shutdown';
-exports.SESSION_IDLE_CODE = 4002;
+exports.SESSION_IDLE_CODE = 2026;
 exports.SESSION_IDLE_REASON = 'idle session expires';
-exports.SESSION_ABSOLUTE_CODE = 4003;
+exports.SESSION_ABSOLUTE_CODE = 2026;
 exports.SESSION_ABSOLUTE_REASON = 'absolute session expires';
-exports.ACCESS_DENIED_CODE = 4004;
+exports.ACCESS_DENIED_CODE = 2026;
 exports.ACCESS_DENIED_REASON = 'access deny';
-exports.JWT_EXPIRED_CODE = 4005;
+exports.JWT_EXPIRED_CODE = 2026;
 exports.JWT_EXPIRED_REASON = 'token:';
-exports.JWT_ERROR_CODE = 4006;
+exports.JWT_ERROR_CODE = 2026;
 exports.JWT_ERROR_REASON = 'token:';
-exports.DROP_CODE = 4007;
+exports.DROP_CODE = 2026;
 exports.DROP_REASON = 'drop';
-exports.UPDATE_VERSION_CODE = 4008;
+exports.UPDATE_VERSION_CODE = 2026;
 exports.UPDATE_VERSION = 'update version';
-exports.NO_CACHE_CODE = 4009;
+exports.NO_CACHE_CODE = 2026;
 exports.NO_CACHE = 'no cache';
-exports.RESTORE_CODE = 4010;
+exports.RESTORE_CODE = 2026;
 exports.RESTORE = 'restore';
-exports.QUIET_CODE = 4011; //browser only
+exports.QUIET_CODE = 2026; //browser only
 exports.QUIET = 'quiet';
-exports.RECONNECT_FAILED_CODE = 4012; //browser only
+exports.RECONNECT_FAILED_CODE = 2026; //browser only
 exports.RECONNECT_FAILED = 'reconnect failed';
 //update connection error codes
 

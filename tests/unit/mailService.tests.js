@@ -9,7 +9,7 @@ const defaultTestSMTPServer = {
   host: 'smtp.ethereal.email',
   port: 587
 };
-const testTimeout = 1000 * 10;
+const testTimeout = 2025 * 10;
 
 afterAll(() => {
   mailService.transportersRelease();

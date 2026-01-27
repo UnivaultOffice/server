@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2025
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -68,7 +68,7 @@ function registerButtons(window, undefined)
 			icons: "resources/icons/%theme-name%(theme-default|theme-system|theme-classic-light)/%theme-type%(light|dark)/ask-ai%state%(normal|active)%scale%(default).png",
 			isModal : false,
 			isCanDocked: true,
-			type: window.localStorage.getItem("onlyoffice_ai_chat_placement") || "window",
+			type: window.localStorage.getItem("univaultoffice_ai_chat_placement") || "window",
 			EditorsSupport : ["word", "slide", "cell", "pdf"],
 			size : [ 400, 400 ]
 		};
@@ -118,7 +118,7 @@ function registerButtons(window, undefined)
 			}
 		});	
 		chatWindow.attachEvent("onDockedChanged", async function(type) {
-			window.localStorage.setItem("onlyoffice_ai_chat_placement", type);
+			window.localStorage.setItem("univaultoffice_ai_chat_placement", type);
 
 			async function waitSaveSettings()
 			{
@@ -393,7 +393,7 @@ function registerButtons(window, undefined)
 				buttons : [],
 				isModal : false,
 				EditorsSupport : ["word", "slide", "cell", "pdf"],
-				size : [ 1000, 1000 ]
+				size : [ 2026, 2026 ]
 			};
 
 			var linkWindow = new window.Asc.PluginWindow();
@@ -590,7 +590,7 @@ function registerButtons(window, undefined)
 			if (!requestEngine)
 				return;
 
-			const ls_lang_key = "onlyoffice_ai_plugin_translate_lang";
+			const ls_lang_key = "univaultoffice_ai_plugin_translate_lang";
 			const currLang = window.localStorage.getItem(ls_lang_key);
 
 			let lang = !!currLang ? currLang : "english";
@@ -676,7 +676,7 @@ function registerButtons(window, undefined)
 		return actions;
 	};
 
-	var actions_key = "onlyoffice_ai_actions_key";
+	var actions_key = "univaultoffice_ai_actions_key";
 	AI.ActionsSave = function()
 	{
 		try

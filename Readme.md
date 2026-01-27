@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-GNU%20AGPL%20V3-green.svg?style=flat)](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
-The backend server software layer which is the part of [ONLYOFFICE Document Server][2] and is the base for all other components.
+The backend server software layer which is the part of [UNIVAULTOFFICE Document Server][2] and is the base for all other components.
 
 ## Document service set up
 
@@ -16,7 +16,7 @@ For the document service to work correctly it is necessary to install the follow
 
 2. [Java](https://java.com/en/download/). Necessary for the sdk build.
 
-3. Database (MySQL or PostgreSQL). When installing use the `onlyoffice` password for the `root` user.
+3. Database (MySQL or PostgreSQL). When installing use the `univaultoffice` password for the `root` user.
 
    - [MySQL Server](http://dev.mysql.com/downloads/windows/installer/) version 5.5 or later
 
@@ -45,9 +45,9 @@ For the document service to work correctly it is necessary to install the follow
         login and password introduced during installation, then enter commands:
 
         ```sql
-        CREATE USER onlyoffice WITH PASSWORD 'onlyoffice';
-        CREATE DATABASE onlyoffice OWNER onlyoffice;
-        \c onlyoffice
+        CREATE USER univaultoffice WITH PASSWORD 'univaultoffice';
+        CREATE DATABASE univaultoffice OWNER univaultoffice;
+        \c univaultoffice
         \i 'schema/postgresql/createdb.sql';
         ```
 
@@ -94,11 +94,11 @@ In case it is necessary to temporarily edit the config files, create the local.j
 
 ## User Feedback and Support
 
-If you have any problems with or questions about [ONLYOFFICE Document Server][2], please visit our official forum to find answers to your questions: [forum.onlyoffice.com][1] or you can ask and answer ONLYOFFICE development questions on [Stack Overflow][3].
+If you have any problems with or questions about [UNIVAULTOFFICE Document Server][2], please visit our official forum to find answers to your questions: [forum.univaultoffice.github.io][1] or you can ask and answer UNIVAULTOFFICE development questions on [Stack Overflow][3].
 
-[1]: https://forum.onlyoffice.com
-[2]: https://github.com/ONLYOFFICE/DocumentServer
-[3]: https://stackoverflow.com/questions/tagged/onlyoffice
+[1]: https://forum.univaultoffice.github.io
+[2]: https://github.com/UnivaultOffice/DocumentServer
+[3]: https://stackoverflow.com/questions/tagged/univaultoffice
 
 ## License
 

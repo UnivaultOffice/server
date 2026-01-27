@@ -15,11 +15,11 @@
 
 
 --
--- Create schema onlyoffice
+-- Create schema univaultoffice
 --
 
--- CREATE DATABASE IF NOT EXISTS onlyoffice DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
--- USE onlyoffice;
+-- CREATE DATABASE IF NOT EXISTS univaultoffice DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+-- USE univaultoffice;
 
 --
 -- Definition of table `doc_changes`

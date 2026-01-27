@@ -1,4 +1,4 @@
--- USE onlyoffice;
+-- USE univaultoffice;
 --
 -- Drop tables
 --

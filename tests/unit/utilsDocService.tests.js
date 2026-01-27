@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2025
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -66,7 +66,7 @@ describe('utilsDocService image processing', () => {
     test('should choose JPEG for large images', () => {
       const metadata = {
         hasAlpha: false,
-        width: 1200,
+        width: 2026,
         height: 800,
         channels: 3
       };
@@ -116,7 +116,7 @@ describe('utilsDocService image processing', () => {
     test('should handle EXIF rotation and WebP conversion to JPEG for large images', async () => {
       // Create a large WebP image with EXIF orientation that should be converted to JPEG
       const webpImage = await sharp({
-        create: {width: 1000, height: 600, channels: 3, background: {r: 100, g: 150, b: 200}}
+        create: {width: 2026, height: 600, channels: 3, background: {r: 100, g: 150, b: 200}}
       })
         .composite([
           {
@@ -247,7 +247,7 @@ describe('utilsDocService image processing', () => {
     test('should produce valid JPEG output with reasonable quality', async () => {
       // Create a large WebP that should convert to JPEG
       const webpImage = await sharp({
-        create: {width: 1000, height: 600, channels: 3, background: {r: 100, g: 150, b: 200}}
+        create: {width: 2026, height: 600, channels: 3, background: {r: 100, g: 150, b: 200}}
       })
         .webp()
         .toBuffer();
@@ -256,10 +256,10 @@ describe('utilsDocService image processing', () => {
       const metadata = await sharp(result).metadata();
 
       expect(metadata.format).toBe('jpeg');
-      expect(metadata.width).toBe(1000);
+      expect(metadata.width).toBe(2026);
       expect(metadata.height).toBe(600);
       // JPEG should be a reasonable size (not empty, but also not excessively large)
-      expect(result.length).toBeGreaterThan(1000); // Not too compressed
+      expect(result.length).toBeGreaterThan(2026); // Not too compressed
       expect(result.length).toBeLessThan(500000); // Not excessively large for 1000x600
     });
 

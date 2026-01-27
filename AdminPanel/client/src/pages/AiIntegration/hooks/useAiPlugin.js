@@ -45,19 +45,19 @@ const useAiPlugin = statisticsData => {
   // Synchronize AI config with localStorage
   useEffect(() => {
     // Load AI config from Redux state to localStorage when component mounts/config changes
-    localStorage.removeItem('onlyoffice_ai_actions_key');
-    localStorage.removeItem('onlyoffice_ai_plugin_storage_key');
+    localStorage.removeItem('univaultoffice_ai_actions_key');
+    localStorage.removeItem('univaultoffice_ai_plugin_storage_key');
     if (config?.aiSettings?.actions) {
-      localStorage.setItem('onlyoffice_ai_actions_key', JSON.stringify(config.aiSettings.actions));
+      localStorage.setItem('univaultoffice_ai_actions_key', JSON.stringify(config.aiSettings.actions));
     }
     if (config?.aiSettings) {
       const {actions: _actions, timeout: _timeout, allowedCorsOrigins: _allowedCorsOrigins, proxy: _proxy, ...storage_key} = config.aiSettings;
-      localStorage.setItem('onlyoffice_ai_plugin_storage_key', JSON.stringify(storage_key));
+      localStorage.setItem('univaultoffice_ai_plugin_storage_key', JSON.stringify(storage_key));
     }
     // Cleanup: clear localStorage when component unmounts
     return () => {
-      localStorage.removeItem('onlyoffice_ai_actions_key');
-      localStorage.removeItem('onlyoffice_ai_plugin_storage_key');
+      localStorage.removeItem('univaultoffice_ai_actions_key');
+      localStorage.removeItem('univaultoffice_ai_plugin_storage_key');
     };
   }, [config?.aiSettings]);
 
@@ -66,8 +66,8 @@ const useAiPlugin = statisticsData => {
     if (!confirmed) return;
 
     try {
-      localStorage.removeItem('onlyoffice_ai_actions_key');
-      localStorage.removeItem('onlyoffice_ai_plugin_storage_key');
+      localStorage.removeItem('univaultoffice_ai_actions_key');
+      localStorage.removeItem('univaultoffice_ai_plugin_storage_key');
 
       await dispatch(resetConfig(['aiSettings'])).unwrap();
       window.location.reload();
@@ -82,7 +82,7 @@ const useAiPlugin = statisticsData => {
     if (!confirmed) return;
 
     try {
-      localStorage.removeItem('onlyoffice_ai_actions_key');
+      localStorage.removeItem('univaultoffice_ai_actions_key');
 
       await dispatch(resetConfig(['aiSettings.actions'])).unwrap();
       window.location.reload();
@@ -121,8 +121,8 @@ const useAiPlugin = statisticsData => {
     const handleSave = () => {
       try {
         // Read AI configuration from localStorage
-        const aiActionsKey = localStorage.getItem('onlyoffice_ai_actions_key');
-        const aiPluginStorageKey = localStorage.getItem('onlyoffice_ai_plugin_storage_key');
+        const aiActionsKey = localStorage.getItem('univaultoffice_ai_actions_key');
+        const aiPluginStorageKey = localStorage.getItem('univaultoffice_ai_plugin_storage_key');
 
         // Prepare updated AI settings
         const updatedAiSettings = {...config?.aiSettings};

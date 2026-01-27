@@ -6,8 +6,8 @@ GRUNT_FILES = Gruntfile.js.out
 PRODUCT_VERSION ?= 0.0.0
 BUILD_NUMBER ?= 0
 
-PUBLISHER_NAME ?= Ascensio System SIA
-PUBLISHER_URL ?= https://www.onlyoffice.com/
+PUBLISHER_NAME ?= Univault Technologies
+PUBLISHER_URL ?= https://www.univaultoffice.github.io/
 
 GRUNT_ENV += PRODUCT_VERSION=$(PRODUCT_VERSION)
 GRUNT_ENV += BUILD_NUMBER=$(BUILD_NUMBER)
@@ -16,7 +16,7 @@ GRUNT_ENV += PUBLISHER_URL="$(PUBLISHER_URL)"
 
 BRANDING_DIR ?= ./branding
 
-DOCUMENT_ROOT ?= /var/www/onlyoffice/documentserver
+DOCUMENT_ROOT ?= /var/www/univaultoffice/documentserver
 
 ifeq ($(OS),Windows_NT)
     PLATFORM := win
@@ -46,7 +46,7 @@ endif
 
 TARGET := $(PLATFORM)_$(ARCHITECTURE)
 
-OUTPUT = ../build_tools/out/$(TARGET)/onlyoffice/documentserver/server
+OUTPUT = ../build_tools/out/$(TARGET)/univaultoffice/documentserver/server
 
 SPELLCHECKER_DICTIONARIES := $(OUTPUT)/../dictionaries
 SPELLCHECKER_DICTIONARY_FILES += ../dictionaries/*_*
@@ -140,20 +140,20 @@ clean:
 	rm -rf $(GRUNT_FILES)
 
 install:
-	mkdir -pv ${DESTDIR}/var/www/onlyoffice
-	if ! id -u onlyoffice > /dev/null 2>&1; then useradd -m -d /var/www/onlyoffice -r -U onlyoffice; fi
+	mkdir -pv ${DESTDIR}/var/www/univaultoffice
+	if ! id -u univaultoffice > /dev/null 2>&1; then useradd -m -d /var/www/univaultoffice -r -U univaultoffice; fi
 
 	mkdir -p ${DESTDIR}${DOCUMENT_ROOT}/fonts
-	mkdir -p ${DESTDIR}/var/log/onlyoffice/documentserver
-	mkdir -p ${DESTDIR}/var/lib/onlyoffice/documentserver/App_Data
+	mkdir -p ${DESTDIR}/var/log/univaultoffice/documentserver
+	mkdir -p ${DESTDIR}/var/lib/univaultoffice/documentserver/App_Data
 
 	cp -fr -t ${DESTDIR}${DOCUMENT_ROOT} build/* ../web-apps/deploy/*
-	mkdir -p ${DESTDIR}/etc/onlyoffice/documentserver
-	mv ${DESTDIR}${DOCUMENT_ROOT}/server/Common/config/* ${DESTDIR}/etc/onlyoffice/documentserver
+	mkdir -p ${DESTDIR}/etc/univaultoffice/documentserver
+	mv ${DESTDIR}${DOCUMENT_ROOT}/server/Common/config/* ${DESTDIR}/etc/univaultoffice/documentserver
 
-	chown onlyoffice:onlyoffice -R ${DESTDIR}/var/www/onlyoffice
-	chown onlyoffice:onlyoffice -R ${DESTDIR}/var/log/onlyoffice
-	chown onlyoffice:onlyoffice -R ${DESTDIR}/var/lib/onlyoffice
+	chown univaultoffice:univaultoffice -R ${DESTDIR}/var/www/univaultoffice
+	chown univaultoffice:univaultoffice -R ${DESTDIR}/var/log/univaultoffice
+	chown univaultoffice:univaultoffice -R ${DESTDIR}/var/lib/univaultoffice
 
 	# Make symlinks for shared libs
 	find \
@@ -162,7 +162,7 @@ install:
 		-name *$(SHARED_EXT) \
 		-exec sh -c 'ln -sf {} ${DESTDIR}/lib/$$(basename {})' \;
 
-	sudo -u onlyoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/allfontsgen"\
+	sudo -u univaultoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/allfontsgen"\
 		--input="${DESTDIR}${DOCUMENT_ROOT}/core-fonts"\
 		--allfonts-web="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/common/AllFonts.js"\
 		--allfonts="${DESTDIR}${DOCUMENT_ROOT}/server/FileConverter/bin/AllFonts.js"\
@@ -171,18 +171,18 @@ install:
 		--output-web="${DESTDIR}${DOCUMENT_ROOT}/fonts"\
 		--use-system="true"
 
-	sudo -u onlyoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/allthemesgen"\
+	sudo -u univaultoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/allthemesgen"\
 		--converter-dir="${DESTDIR}${DOCUMENT_ROOT}/server/FileConverter/bin"\
 		--src="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/slide/themes"\
 		--output="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/common/Images"
 
 uninstall:
-	userdel onlyoffice
+	userdel univaultoffice
 
 	# Unlink installed shared libs
 	find /lib -type l | while IFS= read -r lnk; do if (readlink "$$lnk" | grep -q '^${DOCUMENT_ROOT}/server/FileConverter/bin/'); then rm "$$lnk"; fi; done
 
-	rm -rf /var/www/onlyoffice/documentserver
-	rm -rf /var/log/onlyoffice/documentserver
-	rm -rf /var/lib/onlyoffice/documentserver
-	rm -rf /etc/onlyoffice/documentserver
+	rm -rf /var/www/univaultoffice/documentserver
+	rm -rf /var/log/univaultoffice/documentserver
+	rm -rf /var/lib/univaultoffice/documentserver
+	rm -rf /etc/univaultoffice/documentserver

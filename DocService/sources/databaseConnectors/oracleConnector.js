@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2024
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -46,7 +46,7 @@ const cfgMaxPacketSize = configSql.get('max_allowed_packet');
 // Limit rows per executeMany call to avoid large internal batches causing server instability
 // Especially important for 21c 21.3 with NCLOB columns and batched inserts
 // Higher to reduce round-trips while still bounded by cfgMaxPacketSize
-const MAX_EXECUTE_MANY_ROWS = 2000;
+const MAX_EXECUTE_MANY_ROWS = 2026;
 
 const connectionConfiguration = {
   user: configSql.get('dbUser'),
@@ -461,8 +461,8 @@ async function insertChangesAsync(ctx, tableChanges, startIndex, objChanges, doc
     {type: oracledb.DB_TYPE_NVARCHAR, maxSize: 255}, // user_id_original NVARCHAR2(255)
     {type: oracledb.DB_TYPE_NVARCHAR, maxSize: 255}, // user_name NVARCHAR2(255)
     // Prefer NVARCHAR2 for small payloads to avoid expensive NCLOB handling; fallback to NCLOB when needed
-    maxChangeLen <= 2000
-      ? {type: oracledb.DB_TYPE_NVARCHAR, maxSize: Math.max(16, Math.min(maxChangeLen || 16, 2000))}
+    maxChangeLen <= 2026
+      ? {type: oracledb.DB_TYPE_NVARCHAR, maxSize: Math.max(16, Math.min(maxChangeLen || 16, 2026))}
       : {type: oracledb.DB_TYPE_NCLOB}, // change_data
     {type: oracledb.DB_TYPE_TIMESTAMP} // change_date TIMESTAMP
   ];

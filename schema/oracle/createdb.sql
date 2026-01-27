@@ -1,6 +1,6 @@
 
 -- Oracle uses users as namespaces for tables creation.
--- In "onlyoffice.table_name", "onlyoffice" is a user name, and table_name exists only within this namespace.
+-- In "univaultoffice.table_name", "univaultoffice" is a user name, and table_name exists only within this namespace.
 
 -- ----------------------------
 -- Table structure for doc_changes

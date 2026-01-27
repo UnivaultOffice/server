@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "urn:onlyoffice:config:superset:1",
+  "$id": "urn:univaultoffice:config:superset:1",
   "title": "Config Patch Schema (Superset for Admin and Tenant)",
   "description": "Superset schema with x-scope markers. Use at runtime to derive per-scope schemas.",
   "type": "object",
@@ -200,7 +200,7 @@
                 "dbName": {
                   "type": "string",
                   "description": "Database name",
-                  "examples": ["onlyoffice"]
+                  "examples": ["univaultoffice"]
                 }
               }
             }

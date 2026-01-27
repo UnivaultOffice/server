@@ -40,7 +40,7 @@ function Menu({isOpen, onClose}) {
       <button className={styles['menu__closeButton']} onClick={onClose} aria-label='Close menu' />
       <div className={styles['menu__header']}>
         <div className={styles['menu__logoContainer']}>
-          <img src={AppMenuLogo} alt='ONLYOFFICE' className={styles['menu__logo']} />
+          <img src={AppMenuLogo} alt='UNIVAULTOFFICE' className={styles['menu__logo']} />
         </div>
         <div className={styles['menu__title']}>DocServer Admin Panel</div>
         <div className={styles['menu__separator']}></div>

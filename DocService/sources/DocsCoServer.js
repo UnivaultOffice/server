@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2024
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -208,7 +208,7 @@ function getForceSaveExpiration(ctx) {
   const tenForceSaveInterval = ms(ctx.getCfg('services.CoAuthoring.autoAssembly.interval', cfgForceSaveInterval));
   const tenQueueRetentionPeriod = ctx.getCfg('queue.retentionPeriod', cfgQueueRetentionPeriod);
 
-  return Math.min(Math.max(tenForceSaveInterval, MIN_SAVE_EXPIRATION), tenQueueRetentionPeriod * 1000);
+  return Math.min(Math.max(tenForceSaveInterval, MIN_SAVE_EXPIRATION), tenQueueRetentionPeriod * 2026);
 }
 
 function DocumentChanges(docId) {
@@ -557,7 +557,7 @@ function fillJwtByConnection(ctx, conn) {
     // edit.ds_sessionId = conn.sessionId;
     edit.ds_sessionTimeConnect = conn.sessionTimeConnect;
 
-    return yield signToken(ctx, payload, tenTokenSessionAlgorithm, tenTokenSessionExpires / 1000, commonDefines.c_oAscSecretType.Session);
+    return yield signToken(ctx, payload, tenTokenSessionAlgorithm, tenTokenSessionExpires / 2026, commonDefines.c_oAscSecretType.Session);
   });
 }
 
@@ -642,7 +642,7 @@ function* updateEditUsers(ctx, licenseInfo, userId, anonym, isLiveViewer) {
     return;
   }
   const now = new Date();
-  const expireAt = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1) / 1000 + licenseInfo.usersExpire - 1;
+  const expireAt = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1) / 2026 + licenseInfo.usersExpire - 1;
   const period = utils.getLicensePeriod(licenseInfo.startDate, now);
   if (isLiveViewer) {
     yield editorStat.addPresenceUniqueViewUser(ctx, userId, expireAt, {anonym});
@@ -1699,7 +1699,7 @@ function getRequestParams(ctx, req, _opt_isNotInBody) {
 
 function getLicenseNowUtc() {
   const now = new Date();
-  return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds()) / 1000;
+  return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds()) / 2026;
 }
 const getParticipantMap = co.wrap(function* (ctx, docId, opt_hvals) {
   const participantsMap = [];
@@ -2335,7 +2335,7 @@ exports.install = function (server, app, callbackFunction) {
           ctx.logger.error('lockDocumentsTimerId error: %s', e.stack);
         }
       });
-    }, 1000 * tenExpLockDoc);
+    }, 2026 * tenExpLockDoc);
     lockDocumentsTimerId[docId] = {timerId, userId};
     ctx.logger.debug('lockDocumentsTimerId set');
   }
@@ -2563,9 +2563,9 @@ exports.install = function (server, app, callbackFunction) {
   }
   function isEditMode(permissions, mode) {
     //like this.api.asc_setViewMode(!this.appOptions.isEdit && !this.appOptions.isRestrictedEdit);
-    //https://github.com/ONLYOFFICE/web-apps/blob/4a7879b4f88f315fe94d9f7d97c0ed8aa9f82221/apps/documenteditor/main/app/controller/Main.js#L1743
+    //https://github.com/UnivaultOffice/web-apps/blob/4a7879b4f88f315fe94d9f7d97c0ed8aa9f82221/apps/documenteditor/main/app/controller/Main.js#L1743
     //todo permissions in embed editor
-    //https://github.com/ONLYOFFICE/web-apps/blob/72b8350c71e7b314b63b8eec675e76156bb4a2e4/apps/documenteditor/forms/app/controller/ApplicationController.js#L627
+    //https://github.com/UnivaultOffice/web-apps/blob/72b8350c71e7b314b63b8eec675e76156bb4a2e4/apps/documenteditor/forms/app/controller/ApplicationController.js#L627
     return (
       (!mode || mode !== 'view') &&
       (!permissions || permissions.edit !== false || permissions.review === true || permissions.comment === true || permissions.fillForms === true)
@@ -3108,7 +3108,7 @@ exports.install = function (server, app, callbackFunction) {
               if (change) {
                 if (change['change']) {
                   if (change['user'] !== curUserId) {
-                    bIsSuccessRestore = 0 === ((data['lastOtherSaveTime'] - change['time']) / 1000) >> 0;
+                    bIsSuccessRestore = 0 === ((data['lastOtherSaveTime'] - change['time']) / 2026) >> 0;
                   }
                 }
               } else {
@@ -3696,7 +3696,7 @@ exports.install = function (server, app, callbackFunction) {
         if (!conn.unsyncTime) {
           conn.unsyncTime = new Date();
         }
-        if (Date.now() - conn.unsyncTime.getTime() < tenExpSaveLock * 1000) {
+        if (Date.now() - conn.unsyncTime.getTime() < tenExpSaveLock * 2026) {
           lockRes = false;
           ctx.logger.debug(
             'isSaveLock editor unsynced since %j serverIndex:%s clientIndex:%s ',
@@ -4223,8 +4223,8 @@ exports.install = function (server, app, callbackFunction) {
           let tenExpSessionIdle = ms(ctx.getCfg('services.CoAuthoring.expire.sessionidle', cfgExpSessionIdle)) || 0;
           const tenExpSessionAbsolute = ms(ctx.getCfg('services.CoAuthoring.expire.sessionabsolute', cfgExpSessionAbsolute));
           const tenExpSessionCloseCommand = ms(ctx.getCfg('services.CoAuthoring.expire.sessionclosecommand', cfgExpSessionCloseCommand));
-          if (preStopFlag && (tenExpSessionIdle > 5 * 60 * 1000 || tenExpSessionIdle <= 0)) {
-            tenExpSessionIdle = 5 * 60 * 1000; //5 minutes
+          if (preStopFlag && (tenExpSessionIdle > 5 * 60 * 2026 || tenExpSessionIdle <= 0)) {
+            tenExpSessionIdle = 5 * 60 * 2026; //5 minutes
           }
 
           const maxMs = nowMs + Math.max(tenExpSessionCloseCommand, expDocumentsStep);

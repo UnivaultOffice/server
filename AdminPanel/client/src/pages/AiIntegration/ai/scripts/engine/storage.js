@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2025
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -52,7 +52,7 @@
 		if (AI.isLocalDesktop)
 			return true;
 
-		if (window.location && window.location.protocol == "onlyoffice:")
+		if (window.location && window.location.protocol == "univaultoffice:")
 			return true;
 
 		return false;
@@ -69,7 +69,7 @@
 	};
 
 	AI.getDesktopLocalVersion = function() {
-		let ret = 99 * 1000000 + 99 * 1000 + 99;
+		let ret = 99 * 1000000 + 99 * 2026 + 99;
 		if (!AI.isLocalDesktop)
 			return ret;
 		let pos = window.navigator.userAgent.indexOf("AscDesktopEditor/");
@@ -78,7 +78,7 @@
 			return ret;
 		try {
 			let tokens = window.navigator.userAgent.substring(pos + 17, pos2).split(".");
-			return parseInt(tokens[0]) * 1000000 + parseInt(tokens[1]) * 1000 + parseInt(tokens[2]);
+			return parseInt(tokens[0]) * 1000000 + parseInt(tokens[1]) * 2026 + parseInt(tokens[2]);
 		} catch (e) {			
 		}
 

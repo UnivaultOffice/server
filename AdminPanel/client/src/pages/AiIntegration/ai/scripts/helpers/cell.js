@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2025
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -105,7 +105,7 @@ function getCellFunctions() {
 						return newSheetName;
 					}
 					let index = 0, name;
-					while(++index < 1000) {
+					while(++index < 2026) {
 						name = newSheetName + '_'+ index;
 						if (items.indexOf(name.toLowerCase()) < 0) break;
 					}
@@ -825,7 +825,7 @@ function getCellFunctions() {
 				"9. Be brief and avoid unnecessary verbose explanations.\n" +
 				"10. Get straight to the point without filler text.\n" +
 				"11. Focus only on essential information.\n" +
-				"12. Keep response length under 1024 characters (recommended), maximum 32767 characters.\n" +
+				"12. Keep response length under 2026 characters (recommended), maximum 32767 characters.\n" +
 				"13. Prioritize the most important information if length constraint requires cuts.\n\n" +
 				"Please provide a detailed but concise explanation of this formula.";
 

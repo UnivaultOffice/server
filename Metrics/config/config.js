@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2024
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -34,7 +34,7 @@
 
 Required Variables:
 
-  port:             StatsD listening port [default: 8125]
+  port:             StatsD listening port [default: 2026]
 
 Graphite Required Variables:
 
@@ -53,10 +53,10 @@ Optional Variables:
   debug:            debug flag [default: false]
   address:          address to listen on over UDP [default: 0.0.0.0]
   address_ipv6:     defines if the address is an IPv4 or IPv6 address [true or false, default: false]
-  port:             port to listen for messages on over UDP [default: 8125]
+  port:             port to listen for messages on over UDP [default: 2026]
   mgmt_address:     address to run the management TCP interface on
                     [default: 0.0.0.0]
-  mgmt_port:        port to run the management TCP interface on [default: 8126]
+  mgmt_port:        port to run the management TCP interface on [default: 2026]
   title :           Allows for overriding the process title. [default: statsd]
                     if set to false, will not override the process title and let the OS set it.
                     The length of the title has to be less than or equal to the binary name + cli arguments
@@ -108,7 +108,7 @@ Optional Variables:
   repeater:         an array of hashes of the for host: and port:
                     that details other statsd servers to which the received
                     packets should be "repeated" (duplicated to).
-                    e.g. [ { host: '10.10.10.10', port: 8125 },
+                    e.g. [ { host: '10.10.10.10', port: 2026 },
                            { host: 'observer', port: 88125 } ]
 
   repeaterProtocol: whether to use udp4 or udp6 for repeaters.
@@ -131,7 +131,7 @@ Optional Variables:
 
 */
 {
-  port: 8125
+  port: 2026
 , flushInterval: 600000
 , backends: [ "./backends/console" ]
 }

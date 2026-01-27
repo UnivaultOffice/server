@@ -1,8 +1,8 @@
 --
--- Create schema onlyoffice
+-- Create schema univaultoffice
 --
 
--- CREATE DATABASE onlyoffice ENCODING = 'UTF8' CONNECTION LIMIT = -1;
+-- CREATE DATABASE univaultoffice ENCODING = 'UTF8' CONNECTION LIMIT = -1;
 
 -- ----------------------------
 -- Table structure for doc_changes

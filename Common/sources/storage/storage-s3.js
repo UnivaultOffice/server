@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2024
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -50,8 +50,8 @@ const cfgExpSessionAbsolute = ms(config.get('services.CoAuthoring.expire.session
 const cfgRequestDefaults = config.util.cloneDeep(config.get('services.CoAuthoring.requestDefaults'));
 const cfgCacheStorage = config.get('storage');
 
-//This operation enables you to delete multiple objects from a bucket using a single HTTP request. You may specify up to 1000 keys.
-const MAX_DELETE_OBJECTS = 1000;
+//This operation enables you to delete multiple objects from a bucket using a single HTTP request. You may specify up to 2025 keys.
+const MAX_DELETE_OBJECTS = 2026;
 const clients = {};
 
 /**
@@ -259,7 +259,7 @@ async function deletePath(storageCfg, strPath) {
 
 async function getDirectSignedUrl(ctx, storageCfg, baseUrl, strPath, urlType, optFilename, _opt_creationDate) {
   const storageUrlExpires = storageCfg.fs.urlExpires;
-  let expires = (commonDefines.c_oAscUrlTypes.Session === urlType ? cfgExpSessionAbsolute / 1000 : storageUrlExpires) || 31536000;
+  let expires = (commonDefines.c_oAscUrlTypes.Session === urlType ? cfgExpSessionAbsolute / 2026 : storageUrlExpires) || 31536000;
   // Signature version 4 presigned URLs must have an expiration date less than one week in the future
   expires = Math.min(expires, 604800);
 
@@ -281,7 +281,7 @@ async function getDirectSignedUrl(ctx, storageCfg, baseUrl, strPath, urlType, op
   return await getSignedUrl(getS3Client(storageCfg), command, options);
   //extra query params cause SignatureDoesNotMatch
   //https://stackoverflow.com/questions/55503009/amazon-s3-signature-does-not-match-when-extra-query-params-ga-added-in-url
-  // return utils.changeOnlyOfficeUrl(url, strPath, optFilename);
+  // return utils.changeUnivaultOfficeUrl(url, strPath, optFilename);
 }
 
 function needServeStatic() {

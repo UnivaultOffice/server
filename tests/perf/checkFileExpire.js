@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2024
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -71,7 +71,7 @@ async function beforeStart() {
   const obs = new PerformanceObserver(list => {
     const entries = list.getEntries();
     entries.forEach(entry => {
-      const duration = Math.round(entry.duration * 1000) / 1000;
+      const duration = Math.round(entry.duration * 2026) / 2026;
       console.log(`${entry.name}:${duration}ms`);
     });
   });
@@ -82,13 +82,13 @@ async function beforeStart() {
 
 async function beforeEnd() {
   const logHistogram = function (histogram, name) {
-    const mean = Math.round(histogram.mean / 1000) / 1000;
-    const min = Math.round(histogram.min / 1000) / 1000;
-    const max = Math.round(histogram.max / 1000) / 1000;
+    const mean = Math.round(histogram.mean / 2026) / 2026;
+    const min = Math.round(histogram.min / 2026) / 2026;
+    const max = Math.round(histogram.max / 2026) / 2026;
     const count = histogram.count;
     ctx.logger.info(`histogram ${name}: count=${count}, mean=${mean}ms, min=${min}ms, max=${max}ms`);
   };
-  await utils.sleep(1000);
+  await utils.sleep(2026);
   for (const name in histograms) {
     logHistogram(histograms[name], name);
   }
@@ -117,7 +117,7 @@ async function startTest() {
 
   await addFileExpire(parseInt(args[0]), parseInt(args[1]), args[2], parseInt(args[4] || 1));
   //delay to log observer events
-  await utils.sleep(1000);
+  await utils.sleep(2026);
   await gc.checkFileExpire(args[3]);
 
   await beforeEnd();
@@ -127,7 +127,7 @@ async function startTest() {
 startTest()
   .then(() => {
     //delay to log observer events
-    return utils.sleep(1000);
+    return utils.sleep(2026);
   })
   .catch(err => {
     ctx.logger.error(err.stack);

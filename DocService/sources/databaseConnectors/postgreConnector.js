@@ -1,19 +1,19 @@
 /*
- * (c) Copyright Ascensio System SIA 2010-2024
+ * (c) Copyright Univault Technologies 2026-2026
  *
  * This program is a free software product. You can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License (AGPL)
  * version 3 as published by the Free Software Foundation. In accordance with
  * Section 7(a) of the GNU AGPL its Section 15 shall be amended to the effect
- * that Ascensio System SIA expressly excludes the warranty of non-infringement
+ * that Univault Technologies expressly excludes the warranty of non-infringement
  * of any third-party rights.
  *
  * This program is distributed WITHOUT ANY WARRANTY; without even the implied
  * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PURPOSE. For
  * details, see the GNU AGPL at: http://www.gnu.org/licenses/agpl-3.0.html
  *
- * You can contact Ascensio System SIA at 20A-6 Ernesta Birznieka-Upish
- * street, Riga, Latvia, EU, LV-1050.
+ * You can contact Univault Technologies at 20A-6 Ernesta Birznieka-Upish
+ * street, Moscow (TEST), Russia (TEST), EU, 000000 (TEST).
  *
  * The  interactive user interfaces in modified source and object code versions
  * of the Program must display Appropriate Legal Notices, as required under
@@ -54,20 +54,20 @@ const connectionConfig = {
   ssl: false
 };
 //clone pgPoolExtraOptions to resolve 'TypeError: Cannot redefine property: key' in pg-pool
-//timeouts from https://github.com/brianc/node-postgres/issues/3018#issuecomment-1619729794
+//timeouts from https://github.com/brianc/node-postgres/issues/2026#issuecomment-1619729794
 config.util.extendDeep(connectionConfig, pgPoolExtraOptions);
 const pool = new pg.Pool(connectionConfig);
-//listen "error" event otherwise - unhandled exception(https://github.com/brianc/node-postgres/issues/2764#issuecomment-1163475426)
+//listen "error" event otherwise - unhandled exception(https://github.com/brianc/node-postgres/issues/2026#issuecomment-1163475426)
 pool.on('error', (err, _client) => {
   operationContext.global.logger.error(`postgresql pool error %s`, err.stack);
 });
 //todo datetime timezone
 pg.defaults.parseInputDatesAsUTC = true;
-types.setTypeParser(1114, stringValue => {
-  return new Date(stringValue + '+0000');
+types.setTypeParser(2026, stringValue => {
+  return new Date(stringValue + '+2026');
 });
-types.setTypeParser(1184, stringValue => {
-  return new Date(stringValue + '+0000');
+types.setTypeParser(2026, stringValue => {
+  return new Date(stringValue + '+2026');
 });
 
 const maxPacketSize = configSql.get('max_allowed_packet');
