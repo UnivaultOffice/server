@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Run Postgres DB docker container
-        run: docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=onlyoffice -e POSTGRES_USER=onlyoffice -e POSTGRES_DB=onlyoffice -d postgres:latest
+        run: docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=univaultoffice -e POSTGRES_USER=univaultoffice -e POSTGRES_DB=univaultoffice -d postgres:latest
 
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -41,9 +41,9 @@ jobs:
 
       - name: Creating schema
         run: |
-          docker exec postgres psql -d onlyoffice -U onlyoffice -c "CREATE SCHEMA IF NOT EXISTS ci_test;"
+          docker exec postgres psql -d univaultoffice -U univaultoffice -c "CREATE SCHEMA IF NOT EXISTS ci_test;"
           docker cp ./schema/postgresql/createdb.sql postgres:/
-          docker exec postgres bash -c 'PGOPTIONS="-c search_path=ci_test" psql -d onlyoffice -U onlyoffice -a -f /createdb.sql'
+          docker exec postgres bash -c 'PGOPTIONS="-c search_path=ci_test" psql -d univaultoffice -U univaultoffice -a -f /createdb.sql'
 
       - name: Run Jest
         run: npm run "integration database tests"

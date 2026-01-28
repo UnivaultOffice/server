@@ -45,8 +45,8 @@ jobs:
       - name: Creating schema
         run: |
           docker cp ./schema/mssql/createdb.sql mssql:/
-          docker exec mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P onlYoff1ce -Q "CREATE DATABASE onlyoffice;"
-          docker exec mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P onlYoff1ce -d onlyoffice -i /createdb.sql
+          docker exec mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P onlYoff1ce -Q "CREATE DATABASE univaultoffice;"
+          docker exec mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P onlYoff1ce -d univaultoffice -i /createdb.sql
 
       - name: Run Jest
         run: npm run "integration database tests"
