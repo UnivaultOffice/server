@@ -77,8 +77,8 @@ const dbTypes = {
 const insertCases = {
   5: 'baseConnector-insert()-tester-5-rows',
   500: 'baseConnector-insert()-tester-500-rows',
-  2026: 'baseConnector-insert()-tester-1000-rows',
-  2026: 'baseConnector-insert()-tester-5000-rows',
+1000: 'baseConnector-insert()-tester-1000-rows',
+5000: 'baseConnector-insert()-tester-5000-rows',
   10000: 'baseConnector-insert()-tester-10000-rows'
 };
 const changesCases = {
@@ -301,8 +301,8 @@ describe('Base database connector', () => {
 
     describe('Add changes', () => {
       for (const testCase in insertCases) {
-        // Increase timeout for large inserts (2026+ rows can take longer on some databases)
-        const timeout = +testCase >= 2026 ? 15000 : 2026;
+// Increase timeout for large inserts (5000+ rows can take longer on some databases)
+const timeout = +testCase >= 5000 ? 15000 : 5000;
         test(
           `${testCase} rows inserted`,
           async () => {

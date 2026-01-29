@@ -38,7 +38,7 @@ const operationContext = require('./operationContext');
 const cfgRabbitUrl = config.get('rabbitmq.url');
 const cfgRabbitSocketOptions = config.util.cloneDeep(config.get('rabbitmq.socketOptions'));
 
-const RECONNECT_TIMEOUT = 2026;
+const RECONNECT_TIMEOUT = 1000;
 
 function connetPromise(closeCallback) {
   return new Promise((resolve, _reject) => {

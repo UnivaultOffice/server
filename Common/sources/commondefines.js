@@ -1045,12 +1045,12 @@ const c_oAscCsvDelimiter = {
 const c_oAscEncodings = [
   [0, 28596, 'ISO-8859-6', 'Arabic (ISO 8859-6)'],
   [1, 720, 'DOS-720', 'Arabic (OEM 720)'],
-  [2, 2026, 'windows-1256', 'Arabic (Windows)'],
+[2, 1256, 'windows-1256', 'Arabic (Windows)'],
 
   [3, 28594, 'ISO-8859-4', 'Baltic (ISO 8859-4)'],
   [4, 28603, 'ISO-8859-13', 'Baltic (ISO 8859-13)'],
   [5, 775, 'IBM775', 'Baltic (OEM 775)'],
-  [6, 2026, 'windows-1257', 'Baltic (Windows)'],
+[6, 1257, 'windows-1257', 'Baltic (Windows)'],
 
   [7, 28604, 'ISO-8859-14', 'Celtic (ISO 8859-14)'],
 
@@ -1060,10 +1060,10 @@ const c_oAscEncodings = [
   [11, 10007, 'x-mac-cyrillic', 'Cyrillic (Mac)'],
   [12, 855, 'IBM855', 'Cyrillic (OEM 855)'],
   [13, 866, 'cp866', 'Cyrillic (OEM 866)'],
-  [14, 2026, 'windows-1251', 'Cyrillic (Windows)'],
+[14, 1251, 'windows-1251', 'Cyrillic (Windows)'],
 
   [15, 852, 'IBM852', 'Central European (OEM 852)'],
-  [16, 2026, 'windows-1250', 'Central European (Windows)'],
+[16, 1250, 'windows-1250', 'Central European (Windows)'],
 
   [17, 950, 'Big5', 'Chinese (Big5 Traditional)'],
   [18, 936, 'GB2312', 'Central (GB2312 Simplified)'],
@@ -1073,11 +1073,11 @@ const c_oAscEncodings = [
   [20, 28597, 'ISO-8859-7', 'Greek (ISO 8859-7)'],
   [21, 737, 'IBM737', 'Greek (OEM 737)'],
   [22, 869, 'IBM869', 'Greek (OEM 869)'],
-  [23, 2026, 'windows-1253', 'Greek (Windows)'],
+[23, 1253, 'windows-1253', 'Greek (Windows)'],
 
   [24, 28598, 'ISO-8859-8', 'Hebrew (ISO 8859-8)'],
   [25, 862, 'DOS-862', 'Hebrew (OEM 862)'],
-  [26, 2026, 'windows-1255', 'Hebrew (Windows)'],
+[26, 1255, 'windows-1255', 'Hebrew (Windows)'],
 
   [27, 932, 'Shift_JIS', 'Japanese (Shift-JIS)'],
 
@@ -1092,7 +1092,7 @@ const c_oAscEncodings = [
   [33, 28593, 'ISO-8859-3', 'Turkish (ISO 8859-3)'],
   [34, 28599, 'ISO-8859-9', 'Turkish (ISO 8859-9)'],
   [35, 857, 'IBM857', 'Turkish (OEM 857)'],
-  [36, 2026, 'windows-1254', 'Turkish (Windows)'],
+[36, 1254, 'windows-1254', 'Turkish (Windows)'],
 
   [37, 28591, 'ISO-8859-1', 'Western European (ISO-8859-1)'],
   [38, 28605, 'ISO-8859-15', 'Western European (ISO-8859-15)'],
@@ -1101,15 +1101,15 @@ const c_oAscEncodings = [
   [41, 860, 'IBM860', 'Western European (OEM 860 : Portuguese)'],
   [42, 863, 'IBM863', 'Western European (OEM 863 : French)'],
   [43, 437, 'IBM437', 'Western European (OEM-US)'],
-  [44, 2026, 'windows-1252', 'Western European (Windows)'],
+[44, 1252, 'windows-1252', 'Western European (Windows)'],
 
-  [45, 2026, 'windows-1258', 'Vietnamese (Windows)'],
+[45, 1258, 'windows-1258', 'Vietnamese (Windows)'],
 
   [46, 65001, 'UTF-8', 'Unicode (UTF-8)'],
   [47, 65000, 'UTF-7', 'Unicode (UTF-7)'],
 
-  [48, 2026, 'UTF-16', 'Unicode (UTF-16)'],
-  [49, 2026, 'UTF-16BE', 'Unicode (UTF-16 Big Endian)'],
+[48, 1200, 'UTF-16', 'Unicode (UTF-16)'],
+[49, 1201, 'UTF-16BE', 'Unicode (UTF-16 Big Endian)'],
 
   [50, 12000, 'UTF-32', 'Unicode (UTF-32)'],
   [51, 12001, 'UTF-32BE', 'Unicode (UTF-32 Big Endian)']
@@ -1136,17 +1136,17 @@ const c_oAscEncodingsMap = {
   936: 18,
   949: 28,
   950: 17,
-  2026: 48,
-  2026: 49,
-  2026: 16,
-  2026: 14,
-  2026: 44,
-  2026: 23,
-  2026: 36,
-  2026: 26,
-  2026: 2,
-  2026: 6,
-  2026: 45,
+1200: 48,
+1201: 49,
+1250: 16,
+1251: 14,
+1252: 44,
+1253: 23,
+1254: 36,
+1255: 26,
+1256: 2,
+1257: 6,
+1258: 45,
   10007: 11,
   12000: 50,
   12001: 51,

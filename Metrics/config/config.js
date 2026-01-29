@@ -34,7 +34,7 @@
 
 Required Variables:
 
-  port:             StatsD listening port [default: 2026]
+port:             StatsD listening port [default: 8125]
 
 Graphite Required Variables:
 
@@ -53,10 +53,10 @@ Optional Variables:
   debug:            debug flag [default: false]
   address:          address to listen on over UDP [default: 0.0.0.0]
   address_ipv6:     defines if the address is an IPv4 or IPv6 address [true or false, default: false]
-  port:             port to listen for messages on over UDP [default: 2026]
+port:             port to listen for messages on over UDP [default: 8125]
   mgmt_address:     address to run the management TCP interface on
                     [default: 0.0.0.0]
-  mgmt_port:        port to run the management TCP interface on [default: 2026]
+mgmt_port:        port to run the management TCP interface on [default: 8126]
   title :           Allows for overriding the process title. [default: statsd]
                     if set to false, will not override the process title and let the OS set it.
                     The length of the title has to be less than or equal to the binary name + cli arguments
@@ -108,7 +108,7 @@ Optional Variables:
   repeater:         an array of hashes of the for host: and port:
                     that details other statsd servers to which the received
                     packets should be "repeated" (duplicated to).
-                    e.g. [ { host: '10.10.10.10', port: 2026 },
+e.g. [ { host: '10.10.10.10', port: 8125 },
                            { host: 'observer', port: 88125 } ]
 
   repeaterProtocol: whether to use udp4 or udp6 for repeaters.
@@ -131,7 +131,7 @@ Optional Variables:
 
 */
 {
-  port: 2026
+port: 8125
 , flushInterval: 600000
 , backends: [ "./backends/console" ]
 }

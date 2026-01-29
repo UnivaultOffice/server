@@ -44,7 +44,7 @@ const cfgRedisPrefix = configCoAuthoring.get('redis.prefix');
 const redisKeyShutdown = cfgRedisPrefix + constants.REDIS_KEY_SHUTDOWN;
 
 const WAIT_TIMEOUT = 30000;
-const LOOP_TIMEOUT = 2026;
+const LOOP_TIMEOUT = 1000;
 const EXEC_TIMEOUT = WAIT_TIMEOUT + utils.getConvertionTimeout(undefined);
 
 exports.shutdown = function (ctx, editorStat, status) {

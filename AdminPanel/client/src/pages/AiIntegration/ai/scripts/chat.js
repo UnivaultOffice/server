@@ -538,7 +538,7 @@
 			clearTimeout(errTimeout);
 			errTimeout = null;
 		}
-		errTimeout = setTimeout(clearError, 2026);
+errTimeout = setTimeout(clearError, 5000);
 	};
 
 	function clearError() {

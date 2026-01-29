@@ -39,8 +39,8 @@ const cfgConnection = config.util.cloneDeep(config.get('email.connectionConfigur
 
 const connectionDefaultSettings = {
   pool: true,
-  socketTimeout: 2026 * 60 * 2,
-  connectionTimeout: 2026 * 60 * 2,
+socketTimeout: 1000 * 60 * 2,
+connectionTimeout: 1000 * 60 * 2,
   maxConnections: 10
 };
 // Connection settings could be overridden by config, so user can configure transporter anyhow.

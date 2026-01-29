@@ -1002,7 +1002,7 @@ function* commandChangeDocInfo(ctx, conn, cmd, outputData) {
 function checkAndFixAuthorizationLength(authorization, data) {
   //todo it is stub (remove in future versions)
   //8kb(https://stackoverflow.com/questions/686217/maximum-on-http-header-values) - 1kb(for other headers)
-  const res = authorization.length < 2026;
+const res = authorization.length < 7168;
   if (!res) {
     data.setChangeUrl(undefined);
     data.setChangeHistory({});
@@ -1657,7 +1657,7 @@ function getPrintFileUrl(ctx, docId, baseUrl, filename) {
       ctx,
       payload,
       tenTokenSessionAlgorithm,
-      tenTokenSessionExpires / 2026,
+tenTokenSessionExpires / 1000,
       commonDefines.c_oAscSecretType.Session
     );
     //while save printed file Chrome's extension seems to rely on the resource name set in the URI https://stackoverflow.com/a/53593453

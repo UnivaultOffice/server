@@ -71,7 +71,7 @@ async function beforeStart() {
   const obs = new PerformanceObserver(list => {
     const entries = list.getEntries();
     entries.forEach(entry => {
-      const duration = Math.round(entry.duration * 2026) / 2026;
+const duration = Math.round(entry.duration * 1000) / 1000;
       console.log(`${entry.name}:${duration}ms`);
     });
   });
@@ -82,13 +82,13 @@ async function beforeStart() {
 
 async function beforeEnd() {
   const logHistogram = function (histogram, name) {
-    const mean = Math.round(histogram.mean / 2026) / 2026;
-    const min = Math.round(histogram.min / 2026) / 2026;
-    const max = Math.round(histogram.max / 2026) / 2026;
+const mean = Math.round(histogram.mean / 1000) / 1000;
+const min = Math.round(histogram.min / 1000) / 1000;
+const max = Math.round(histogram.max / 1000) / 1000;
     const count = histogram.count;
     ctx.logger.info(`histogram ${name}: count=${count}, mean=${mean}ms, min=${min}ms, max=${max}ms`);
   };
-  await utils.sleep(2026);
+await utils.sleep(1000);
   for (const name in histograms) {
     logHistogram(histograms[name], name);
   }
@@ -117,7 +117,7 @@ async function startTest() {
 
   await addFileExpire(parseInt(args[0]), parseInt(args[1]), args[2], parseInt(args[4] || 1));
   //delay to log observer events
-  await utils.sleep(2026);
+await utils.sleep(1000);
   await gc.checkFileExpire(args[3]);
 
   await beforeEnd();
@@ -127,7 +127,7 @@ async function startTest() {
 startTest()
   .then(() => {
     //delay to log observer events
-    return utils.sleep(2026);
+return utils.sleep(1000);
   })
   .catch(err => {
     ctx.logger.error(err.stack);

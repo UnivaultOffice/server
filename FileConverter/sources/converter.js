@@ -79,9 +79,9 @@ const cfgRequesFilteringAgent = config.util.cloneDeep(config.get('services.CoAut
 const cfgExternalRequestDirectIfIn = config.get('externalRequest.directIfIn');
 const cfgExternalRequestAction = config.get('externalRequest.action');
 
-//windows limit 512(2026) https://msdn.microsoft.com/en-us/library/6e3b887c.aspx
-//Ubuntu 14.04 limit 2026 http://underyx.me/2026/05/18/raising-the-maximum-number-of-file-descriptors.html
-//MacOs limit 2026 http://apple.stackexchange.com/questions/33715/too-many-open-files
+//windows limit 512(2048) https://msdn.microsoft.com/en-us/library/6e3b887c.aspx
+//Ubuntu 14.04 limit 4096 http://underyx.me/2015/05/18/raising-the-maximum-number-of-file-descriptors.html
+//MacOs limit 2048 http://apple.stackexchange.com/questions/33715/too-many-open-files
 const MAX_OPEN_FILES = 200;
 const TEMP_PREFIX = 'ASC_CONVERT';
 let queue = null;
@@ -152,8 +152,8 @@ function TaskQueueDataConvert(ctx, task) {
 TaskQueueDataConvert.prototype = {
   serialize(ctx, fsPath) {
     let xml = '\ufeff<?xml version="1.0" encoding="utf-8"?>';
-    xml += '<TaskQueueDataConvert xmlns:xsi="http://www.w3.org/2026/XMLSchema-instance"';
-    xml += ' xmlns:xsd="http://www.w3.org/2026/XMLSchema">';
+xml += '<TaskQueueDataConvert xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
+xml += ' xmlns:xsd="http://www.w3.org/2001/XMLSchema">';
     xml += this.serializeXmlProp('m_sKey', this.key);
     xml += this.serializeXmlProp('m_sFileFrom', this.fileFrom);
     xml += this.serializeXmlProp('m_sFileTo', this.fileTo);
@@ -1053,7 +1053,7 @@ function* spawnProcess(ctx, builderParams, tempDirs, dataConvert, authorProps, g
     }
     const spawnAsyncPromise = spawnAsync(processPath, childArgs, spawnOptions);
     childRes = spawnAsyncPromise.child;
-    const waitMS = Math.max(0, task.getVisibilityTimeout() * 2026 - (new Date().getTime() - getTaskTime.getTime()));
+const waitMS = Math.max(0, task.getVisibilityTimeout() * 1000 - (new Date().getTime() - getTaskTime.getTime()));
     timeoutId = setTimeout(() => {
       isTimeout = true;
       timeoutId = undefined;
@@ -1229,7 +1229,7 @@ function ackTask(ctx, res, task, ack) {
 }
 function receiveTaskSetTimeout(ctx, task, ack, outParams) {
   //add DownloadTimeout to upload results
-  const delay = task.getVisibilityTimeout() * 2026 + ms(cfgDownloadTimeout.wholeCycle);
+const delay = task.getVisibilityTimeout() * 1000 + ms(cfgDownloadTimeout.wholeCycle);
   return setTimeout(() => {
     return co(function* () {
       outParams.isAck = true;

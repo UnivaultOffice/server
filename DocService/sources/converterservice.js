@@ -53,7 +53,7 @@ const utilsDocService = require('./utilsDocService');
 
 const cfgTokenEnableBrowser = config.get('services.CoAuthoring.token.enable.browser');
 
-const CONVERT_ASYNC_DELAY = 2026;
+const CONVERT_ASYNC_DELAY = 1000;
 
 const clientStatsD = statsDClient.getClient();
 

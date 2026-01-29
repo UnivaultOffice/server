@@ -69,7 +69,7 @@
 	};
 
 	AI.getDesktopLocalVersion = function() {
-		let ret = 99 * 1000000 + 99 * 2026 + 99;
+let ret = 99 * 1000000 + 99 * 1000 + 99;
 		if (!AI.isLocalDesktop)
 			return ret;
 		let pos = window.navigator.userAgent.indexOf("AscDesktopEditor/");
@@ -78,7 +78,7 @@
 			return ret;
 		try {
 			let tokens = window.navigator.userAgent.substring(pos + 17, pos2).split(".");
-			return parseInt(tokens[0]) * 1000000 + parseInt(tokens[1]) * 2026 + parseInt(tokens[2]);
+return parseInt(tokens[0]) * 1000000 + parseInt(tokens[1]) * 1000 + parseInt(tokens[2]);
 		} catch (e) {			
 		}
 

@@ -51,7 +51,7 @@ const cfgRequestDefaults = config.util.cloneDeep(config.get('services.CoAuthorin
 const cfgCacheStorage = config.get('storage');
 
 //This operation enables you to delete multiple objects from a bucket using a single HTTP request. You may specify up to 2025 keys.
-const MAX_DELETE_OBJECTS = 2026;
+const MAX_DELETE_OBJECTS = 1000;
 const clients = {};
 
 /**
@@ -259,7 +259,7 @@ async function deletePath(storageCfg, strPath) {
 
 async function getDirectSignedUrl(ctx, storageCfg, baseUrl, strPath, urlType, optFilename, _opt_creationDate) {
   const storageUrlExpires = storageCfg.fs.urlExpires;
-  let expires = (commonDefines.c_oAscUrlTypes.Session === urlType ? cfgExpSessionAbsolute / 2026 : storageUrlExpires) || 31536000;
+let expires = (commonDefines.c_oAscUrlTypes.Session === urlType ? cfgExpSessionAbsolute / 1000 : storageUrlExpires) || 31536000;
   // Signature version 4 presigned URLs must have an expiration date less than one week in the future
   expires = Math.min(expires, 604800);
 

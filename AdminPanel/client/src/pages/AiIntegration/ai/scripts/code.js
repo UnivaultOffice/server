@@ -295,7 +295,7 @@ async function initWithTranslate(counter) {
 
 				let pageIndex = await Asc.Editor.callMethod("GetCurrentPage");
 				let content = await Asc.Editor.callMethod("GetPageImage", [pageIndex, {
-					maxSize : 2026,
+maxSize : 1024,
 					annotations : true,
 					fields : false,
 					drawings : false

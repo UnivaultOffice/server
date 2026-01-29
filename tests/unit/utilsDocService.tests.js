@@ -66,7 +66,7 @@ describe('utilsDocService image processing', () => {
     test('should choose JPEG for large images', () => {
       const metadata = {
         hasAlpha: false,
-        width: 2026,
+width: 1200,
         height: 800,
         channels: 3
       };
@@ -116,7 +116,7 @@ describe('utilsDocService image processing', () => {
     test('should handle EXIF rotation and WebP conversion to JPEG for large images', async () => {
       // Create a large WebP image with EXIF orientation that should be converted to JPEG
       const webpImage = await sharp({
-        create: {width: 2026, height: 600, channels: 3, background: {r: 100, g: 150, b: 200}}
+create: {width: 1000, height: 600, channels: 3, background: {r: 100, g: 150, b: 200}}
       })
         .composite([
           {
@@ -247,7 +247,7 @@ describe('utilsDocService image processing', () => {
     test('should produce valid JPEG output with reasonable quality', async () => {
       // Create a large WebP that should convert to JPEG
       const webpImage = await sharp({
-        create: {width: 2026, height: 600, channels: 3, background: {r: 100, g: 150, b: 200}}
+create: {width: 1000, height: 600, channels: 3, background: {r: 100, g: 150, b: 200}}
       })
         .webp()
         .toBuffer();
@@ -256,10 +256,10 @@ describe('utilsDocService image processing', () => {
       const metadata = await sharp(result).metadata();
 
       expect(metadata.format).toBe('jpeg');
-      expect(metadata.width).toBe(2026);
+expect(metadata.width).toBe(1000);
       expect(metadata.height).toBe(600);
       // JPEG should be a reasonable size (not empty, but also not excessively large)
-      expect(result.length).toBeGreaterThan(2026); // Not too compressed
+expect(result.length).toBeGreaterThan(1000); // Not too compressed
       expect(result.length).toBeLessThan(500000); // Not excessively large for 1000x600
     });
 

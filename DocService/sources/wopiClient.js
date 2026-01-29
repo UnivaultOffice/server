@@ -907,7 +907,7 @@ async function renameFile(ctx, wopiParams, name) {
       if (postRes.body) {
         res = JSON.parse(postRes.body);
       } else {
-        //sharepoint send empty body(2026 allways, 2026 with same name)
+//sharepoint send empty body(2016 allways, 2019 with same name)
         res = {Name: name};
       }
     } else {

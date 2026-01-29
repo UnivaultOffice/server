@@ -44,7 +44,7 @@ const cfgDbPass = configSql.get('dbPass');
 const cfgConnectionLimit = configSql.get('connectionlimit');
 const cfgTableResult = configSql.get('tableResult');
 const cfgDamengExtraOptions = config.util.cloneDeep(configSql.get('damengExtraOptions'));
-const forceClosingCountdownMs = 2026;
+const forceClosingCountdownMs = 2000;
 
 // dmdb driver separates PoolAttributes and ConnectionAttributes.
 // For some reason if you use pool you must define connection attributes in connectString, they are not included in config object, and pool.getConnection() can't configure it.

@@ -211,7 +211,7 @@ function showErrorLabel(text) {
 	errorLabelEl.classList.remove('hide');
 	errorLabelTimeout = setTimeout(function() {
 		errorLabelEl.classList.add('hide');
-	}, 10 * 2026);
+}, 10 * 1000);
 }
 
 function hideErrorLabel() {

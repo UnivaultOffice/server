@@ -34,7 +34,7 @@
 
 const constants = require('./constants');
 
-const buildDate = '6/29/2026';
+const buildDate = '6/29/2016';
 const oBuildDate = new Date(buildDate);
 
 exports.readLicense = async function () {

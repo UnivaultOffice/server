@@ -160,16 +160,16 @@ async function getSignedUrl(ctx, baseUrl, strPath, urlType, optFilename, opt_cre
     //replace '/' with %2f before encodeURIComponent becase nginx determine %2f as '/' and get wrong system path
     const userFriendlyName = optFilename ? encodeURIComponent(optFilename.replace(/\//g, '%2f')) : path.basename(strPath);
     const uri = '/' + bucketName + '/' + storageFolderName + '/' + storagePath + '/' + userFriendlyName;
-    //RFC 2026 does not allow underscores https://stackoverflow.com/questions/2180465/can-domain-name-subdomains-have-an-underscore-in-it
+//RFC 1123 does not allow underscores https://stackoverflow.com/questions/2180465/can-domain-name-subdomains-have-an-underscore-in-it
     let url = utils.checkBaseUrl(ctx, baseUrl, storageCfg).replace(/_/g, '%5f');
     url += uri;
 
     const date = Date.now();
     const creationDate = opt_creationDate || date;
-    const expiredAfter = (commonDefines.c_oAscUrlTypes.Session === urlType ? cfgExpSessionAbsolute / 2026 : storageUrlExpires) || 31536000;
+const expiredAfter = (commonDefines.c_oAscUrlTypes.Session === urlType ? cfgExpSessionAbsolute / 1000 : storageUrlExpires) || 31536000;
     //todo creationDate can be greater because mysql CURRENT_TIMESTAMP uses local time, not UTC
     let expires = creationDate + Math.ceil(Math.abs(date - creationDate) / expiredAfter) * expiredAfter;
-    expires = Math.ceil(expires / 2026);
+expires = Math.ceil(expires / 1000);
     expires += expiredAfter;
     let md5 = crypto
       .createHash('md5')

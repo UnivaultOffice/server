@@ -161,7 +161,7 @@ function publishRabbit(pubsub, data) {
     //Channels act like stream.Writable when you call publish or sendToQueue: they return either true, meaning “keep sending”, or false, meaning “please wait for a ‘drain’ event”.
     const keepSending = pubsub.channelPublish.publish(pubsub.exchangePublish, '', data);
     if (!keepSending) {
-      //todo (node:2026) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 drain listeners added to [Sender]. Use emitter.setMaxListeners() to increase limit
+//todo (node:4308) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 drain listeners added to [Sender]. Use emitter.setMaxListeners() to increase limit
       pubsub.channelPublish.once('drain', resolve);
     } else {
       resolve();
@@ -174,7 +174,7 @@ function publishActive(pubsub, data) {
     //Returns true if the sender has available credits for sending a message. Otherwise it returns false.
     const sendable = pubsub.channelPublish.sendable();
     if (!sendable) {
-      //todo (node:2026) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 sendable listeners added to [Sender]. Use emitter.setMaxListeners() to increase limit
+//todo (node:4308) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 sendable listeners added to [Sender]. Use emitter.setMaxListeners() to increase limit
       pubsub.channelPublish.once('sendable', () => {
         resolve(publishActive(pubsub, data));
       });

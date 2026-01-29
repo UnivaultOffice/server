@@ -208,7 +208,7 @@ function getForceSaveExpiration(ctx) {
   const tenForceSaveInterval = ms(ctx.getCfg('services.CoAuthoring.autoAssembly.interval', cfgForceSaveInterval));
   const tenQueueRetentionPeriod = ctx.getCfg('queue.retentionPeriod', cfgQueueRetentionPeriod);
 
-  return Math.min(Math.max(tenForceSaveInterval, MIN_SAVE_EXPIRATION), tenQueueRetentionPeriod * 2026);
+return Math.min(Math.max(tenForceSaveInterval, MIN_SAVE_EXPIRATION), tenQueueRetentionPeriod * 1000);
 }
 
 function DocumentChanges(docId) {
@@ -557,7 +557,7 @@ function fillJwtByConnection(ctx, conn) {
     // edit.ds_sessionId = conn.sessionId;
     edit.ds_sessionTimeConnect = conn.sessionTimeConnect;
 
-    return yield signToken(ctx, payload, tenTokenSessionAlgorithm, tenTokenSessionExpires / 2026, commonDefines.c_oAscSecretType.Session);
+return yield signToken(ctx, payload, tenTokenSessionAlgorithm, tenTokenSessionExpires / 1000, commonDefines.c_oAscSecretType.Session);
   });
 }
 
@@ -1699,7 +1699,7 @@ function getRequestParams(ctx, req, _opt_isNotInBody) {
 
 function getLicenseNowUtc() {
   const now = new Date();
-  return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds()) / 2026;
+return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds()) / 1000;
 }
 const getParticipantMap = co.wrap(function* (ctx, docId, opt_hvals) {
   const participantsMap = [];
@@ -2335,7 +2335,7 @@ exports.install = function (server, app, callbackFunction) {
           ctx.logger.error('lockDocumentsTimerId error: %s', e.stack);
         }
       });
-    }, 2026 * tenExpLockDoc);
+}, 1000 * tenExpLockDoc);
     lockDocumentsTimerId[docId] = {timerId, userId};
     ctx.logger.debug('lockDocumentsTimerId set');
   }
@@ -3108,7 +3108,7 @@ exports.install = function (server, app, callbackFunction) {
               if (change) {
                 if (change['change']) {
                   if (change['user'] !== curUserId) {
-                    bIsSuccessRestore = 0 === ((data['lastOtherSaveTime'] - change['time']) / 2026) >> 0;
+bIsSuccessRestore = 0 === ((data['lastOtherSaveTime'] - change['time']) / 1000) >> 0;
                   }
                 }
               } else {
@@ -3696,7 +3696,7 @@ exports.install = function (server, app, callbackFunction) {
         if (!conn.unsyncTime) {
           conn.unsyncTime = new Date();
         }
-        if (Date.now() - conn.unsyncTime.getTime() < tenExpSaveLock * 2026) {
+if (Date.now() - conn.unsyncTime.getTime() < tenExpSaveLock * 1000) {
           lockRes = false;
           ctx.logger.debug(
             'isSaveLock editor unsynced since %j serverIndex:%s clientIndex:%s ',
@@ -4223,8 +4223,8 @@ exports.install = function (server, app, callbackFunction) {
           let tenExpSessionIdle = ms(ctx.getCfg('services.CoAuthoring.expire.sessionidle', cfgExpSessionIdle)) || 0;
           const tenExpSessionAbsolute = ms(ctx.getCfg('services.CoAuthoring.expire.sessionabsolute', cfgExpSessionAbsolute));
           const tenExpSessionCloseCommand = ms(ctx.getCfg('services.CoAuthoring.expire.sessionclosecommand', cfgExpSessionCloseCommand));
-          if (preStopFlag && (tenExpSessionIdle > 5 * 60 * 2026 || tenExpSessionIdle <= 0)) {
-            tenExpSessionIdle = 5 * 60 * 2026; //5 minutes
+if (preStopFlag && (tenExpSessionIdle > 5 * 60 * 1000 || tenExpSessionIdle <= 0)) {
+tenExpSessionIdle = 5 * 60 * 1000; //5 minutes
           }
 
           const maxMs = nowMs + Math.max(tenExpSessionCloseCommand, expDocumentsStep);

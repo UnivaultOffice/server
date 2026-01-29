@@ -121,7 +121,7 @@ async function notify(ctx, notificationType, title, message, opt_cacheKey = unde
 async function checkRulePolicies(ctx, notificationType, tenRule, opt_cacheKey) {
   const {repeatInterval} = tenRule.policies;
   //decrease repeatInterval by 1% to avoid race condition if timeout=repeatInterval
-  const ttl = Math.floor((ms(repeatInterval) * 0.99) / 2026);
+const ttl = Math.floor((ms(repeatInterval) * 0.99) / 1000);
   let isLock = false;
   //todo for compatibility remove if after 8.2
   if (editorStat?.lockNotification) {

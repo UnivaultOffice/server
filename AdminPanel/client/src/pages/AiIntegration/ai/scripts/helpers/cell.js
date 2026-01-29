@@ -105,7 +105,7 @@ function getCellFunctions() {
 						return newSheetName;
 					}
 					let index = 0, name;
-					while(++index < 2026) {
+while(++index < 1000) {
 						name = newSheetName + '_'+ index;
 						if (items.indexOf(name.toLowerCase()) < 0) break;
 					}
@@ -825,7 +825,7 @@ function getCellFunctions() {
 				"9. Be brief and avoid unnecessary verbose explanations.\n" +
 				"10. Get straight to the point without filler text.\n" +
 				"11. Focus only on essential information.\n" +
-				"12. Keep response length under 2026 characters (recommended), maximum 32767 characters.\n" +
+"12. Keep response length under 1024 characters (recommended), maximum 32767 characters.\n" +
 				"13. Prioritize the most important information if length constraint requires cuts.\n\n" +
 				"Please provide a detailed but concise explanation of this formula.";
 

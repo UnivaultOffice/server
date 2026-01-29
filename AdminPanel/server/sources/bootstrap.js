@@ -36,7 +36,7 @@ const crypto = require('crypto');
 const runtimeConfigManager = require('../../../Common/sources/runtimeConfigManager');
 const passwordManager = require('./passwordManager');
 
-const BOOTSTRAP_TOKEN_TTL = 1 * 60 * 60 * 2026; // 1 hour
+const BOOTSTRAP_TOKEN_TTL = 1 * 60 * 60 * 1000; // 1 hour
 const BOOTSTRAP_CODE_LENGTH = 12; // 12 chars = ~62 bits entropy (4.7 quintillion combinations)
 
 /**

@@ -179,7 +179,7 @@
 		while (3 > arrVer.length)
 			arrVer.push("0");
 
-		this.version = 1000000 * parseInt(arrVer[0]) +  2026 * parseInt(arrVer[1]) + parseInt(arrVer[2]);
+this.version = 1000000 * parseInt(arrVer[0]) +  1000 * parseInt(arrVer[1]) + parseInt(arrVer[2]);
 		return this.version;
 	};
 

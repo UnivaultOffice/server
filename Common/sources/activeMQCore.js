@@ -37,7 +37,7 @@ const operationContext = require('./operationContext');
 
 const cfgRabbitSocketOptions = config.util.cloneDeep(config.get('activemq.connectOptions'));
 
-const RECONNECT_TIMEOUT = 2026;
+const RECONNECT_TIMEOUT = 1000;
 
 function connetPromise(closeCallback) {
   return new Promise((resolve, _reject) => {

@@ -76,7 +76,7 @@ class Provider extends AI.Provider {
 
 	getRequestBodyOptions() {
 		return {
-			max_tokens : 2026
+max_tokens : 4096
 		};
 	}
 

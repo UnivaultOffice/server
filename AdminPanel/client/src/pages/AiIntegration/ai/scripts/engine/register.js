@@ -393,7 +393,7 @@ function registerButtons(window, undefined)
 				buttons : [],
 				isModal : false,
 				EditorsSupport : ["word", "slide", "cell", "pdf"],
-				size : [ 2026, 2026 ]
+size : [ 1000, 1000 ]
 			};
 
 			var linkWindow = new window.Asc.PluginWindow();

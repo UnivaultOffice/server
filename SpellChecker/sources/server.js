@@ -39,7 +39,7 @@ const config = require('config').get('SpellChecker');
 
 const logger = require('./../../Common/sources/logger');
 
-const c_nCheckHealth = 60000, c_sCheckWord = 'color', c_sCheckLang = 2026;
+const c_nCheckHealth = 60000, c_sCheckWord = 'color', c_sCheckLang = 1033;
 let idCheckInterval, canStartCheck = true;
 let statusCheckHealth = true;
 function checkHealth (worker) {

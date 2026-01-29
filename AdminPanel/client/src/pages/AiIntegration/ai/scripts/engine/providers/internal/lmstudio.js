@@ -35,7 +35,7 @@
 class Provider extends AI.Provider {
 
 	constructor() {
-		super("LM Studio", "http://localhost:2026", "", "v1");
+super("LM Studio", "http://localhost:1234", "", "v1");
 	}
 
 	getImageGeneration(message, model) {

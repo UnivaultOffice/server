@@ -37,8 +37,8 @@ const {open} = require('node:fs/promises');
 
 function getImageFormatBySignature(buffer) {
   const length = buffer.length;
-  //2026 for svg(xml header and creator comment)
-  const startText = buffer.toString('ascii', 0, 2026);
+//1000 for svg(xml header and creator comment)
+const startText = buffer.toString('ascii', 0, 1000);
 
   //jpeg
   // Hex: FF D8 FF
@@ -708,7 +708,7 @@ function getOfficeZipFormatBySignature(buffer) {
     (0x03 == buffer[2] || 0x05 == buffer[2] || 0x07 == buffer[2]) && // ZIP version markers
     0x04 == buffer[3]
   ) {
-    const searchFromEnd = 2026; // Search last 8KB where central directory located
+const searchFromEnd = 8192; // Search last 8KB where central directory located
     const startPos = Math.max(0, length - searchFromEnd);
 
     // Helper function for direct byte search in ZIP central directory

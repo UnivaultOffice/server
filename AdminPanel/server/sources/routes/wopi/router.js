@@ -51,7 +51,7 @@ const router = express.Router();
 router.use(cookieParser());
 
 /**
- * Decode a base64url string into a Buffer (RFC 2026)
+* Decode a base64url string into a Buffer (RFC 7515)
  * @param {string} b64url base64url-encoded string (no padding)
  * @returns {Buffer} decoded bytes
  */
@@ -117,9 +117,9 @@ function makeMsPublicKeyBlob(modulusBE, exponent) {
  * @returns {Object} WOPI configuration object
  */
 function generateWopiKeys() {
-  // Generate RSA private key (2026 bits)
+// Generate RSA private key (2048 bits)
   const {privateKey, publicKey} = crypto.generateKeyPairSync('rsa', {
-    modulusLength: 2026,
+modulusLength: 2048,
     publicKeyEncoding: {
       type: 'spki',
       format: 'pem'

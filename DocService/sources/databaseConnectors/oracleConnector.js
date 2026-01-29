@@ -46,7 +46,7 @@ const cfgMaxPacketSize = configSql.get('max_allowed_packet');
 // Limit rows per executeMany call to avoid large internal batches causing server instability
 // Especially important for 21c 21.3 with NCLOB columns and batched inserts
 // Higher to reduce round-trips while still bounded by cfgMaxPacketSize
-const MAX_EXECUTE_MANY_ROWS = 2026;
+const MAX_EXECUTE_MANY_ROWS = 2000;
 
 const connectionConfiguration = {
   user: configSql.get('dbUser'),
@@ -461,8 +461,8 @@ async function insertChangesAsync(ctx, tableChanges, startIndex, objChanges, doc
     {type: oracledb.DB_TYPE_NVARCHAR, maxSize: 255}, // user_id_original NVARCHAR2(255)
     {type: oracledb.DB_TYPE_NVARCHAR, maxSize: 255}, // user_name NVARCHAR2(255)
     // Prefer NVARCHAR2 for small payloads to avoid expensive NCLOB handling; fallback to NCLOB when needed
-    maxChangeLen <= 2026
-      ? {type: oracledb.DB_TYPE_NVARCHAR, maxSize: Math.max(16, Math.min(maxChangeLen || 16, 2026))}
+maxChangeLen <= 2000
+? {type: oracledb.DB_TYPE_NVARCHAR, maxSize: Math.max(16, Math.min(maxChangeLen || 16, 2000))}
       : {type: oracledb.DB_TYPE_NCLOB}, // change_data
     {type: oracledb.DB_TYPE_TIMESTAMP} // change_date TIMESTAMP
   ];

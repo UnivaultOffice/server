@@ -177,7 +177,7 @@ DocumentAdditional.prototype.getOpenedAt = function (str) {
   val.fromString(str);
   val.data.forEach(elem => {
     if (undefined !== elem.timezoneOffset) {
-      res = elem.time - elem.timezoneOffset * 60 * 2026;
+res = elem.time - elem.timezoneOffset * 60 * 1000;
     }
   });
   return res;
@@ -188,7 +188,7 @@ DocumentAdditional.prototype.getDocumentLayout = function (str) {
   val.fromString(str);
   val.data.forEach(elem => {
     if (undefined !== elem.timezoneOffset) {
-      res = {openedAt: elem.time - elem.timezoneOffset * 60 * 2026, headingsColor: elem.headingsColor};
+res = {openedAt: elem.time - elem.timezoneOffset * 60 * 1000, headingsColor: elem.headingsColor};
     }
   });
   return res;

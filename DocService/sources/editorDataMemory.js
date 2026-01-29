@@ -75,7 +75,7 @@ EditorCommon.prototype._checkAndLock = function (ctx, name, docId, fencingToken,
   if (data[name] && now < data[name].expireAt && fencingToken !== data[name].fencingToken) {
     res = false;
   } else {
-    const expireAt = now + ttl * 2026;
+const expireAt = now + ttl * 1000;
     data[name] = {fencingToken, expireAt};
   }
   return res;
@@ -305,7 +305,7 @@ EditorStat.prototype.getPresenceUniqueUser = async function (ctx, nowUTC) {
     if (Object.hasOwn(tenantUser, userId)) {
       if (tenantUser[userId].expireAt > nowUTC) {
         const elem = tenantUser[userId];
-        const newElem = {userid: userId, expire: new Date(elem.expireAt * 2026)};
+const newElem = {userid: userId, expire: new Date(elem.expireAt * 1000)};
         Object.assign(newElem, elem.userInfo);
         res.push(newElem);
       } else {
@@ -363,7 +363,7 @@ EditorStat.prototype.getPresenceUniqueViewUser = async function (ctx, nowUTC) {
     if (Object.hasOwn(tenantUser, userId)) {
       if (tenantUser[userId].expireAt > nowUTC) {
         const elem = tenantUser[userId];
-        const newElem = {userid: userId, expire: new Date(elem.expireAt * 2026)};
+const newElem = {userid: userId, expire: new Date(elem.expireAt * 1000)};
         Object.assign(newElem, elem.userInfo);
         res.push(newElem);
       } else {

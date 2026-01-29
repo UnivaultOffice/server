@@ -110,8 +110,8 @@ function getIpFilterRule(address) {
   return exp;
 }
 const pemfileCache = new NodeCache({
-  stdTTL: ms(cfgExpPemStdTtl) / 2026,
-  checkperiod: ms(cfgExpPemCheckPeriod) / 2026,
+stdTTL: ms(cfgExpPemStdTtl) / 1000,
+checkperiod: ms(cfgExpPemCheckPeriod) / 1000,
   errorOnMissing: false,
   useClones: true
 });
@@ -120,9 +120,9 @@ exports.getConvertionTimeout = function (opt_ctx) {
   if (opt_ctx) {
     const tenVisibilityTimeout = opt_ctx.getCfg('queue.visibilityTimeout', cfgVisibilityTimeout);
     const tenQueueRetentionPeriod = opt_ctx.getCfg('queue.retentionPeriod', cfgQueueRetentionPeriod);
-    return 1.5 * (tenVisibilityTimeout + tenQueueRetentionPeriod) * 2026;
+return 1.5 * (tenVisibilityTimeout + tenQueueRetentionPeriod) * 1000;
   } else {
-    return 1.5 * (cfgVisibilityTimeout + cfgQueueRetentionPeriod) * 2026;
+return 1.5 * (cfgVisibilityTimeout + cfgQueueRetentionPeriod) * 1000;
   }
 };
 
@@ -130,7 +130,7 @@ exports.addSeconds = function (date, sec) {
   date.setSeconds(date.getSeconds() + sec);
 };
 exports.getMillisecondsOfHour = function (date) {
-  return (date.getUTCMinutes() * 60 + date.getUTCSeconds()) * 2026 + date.getUTCMilliseconds();
+return (date.getUTCMinutes() * 60 + date.getUTCSeconds()) * 1000 + date.getUTCMilliseconds();
 };
 exports.encodeXml = function (value) {
   return value.replace(/[<>&'"\r\n\t\xA0]/g, c => {
@@ -460,7 +460,7 @@ async function postRequestPromise(ctx, uri, postData, postDataStream, postDataSi
     //If no Content-Length is set, data will automatically be encoded in HTTP Chunked transfer encoding,
     //so that server knows when the data ends. The Transfer-Encoding: chunked header is added.
     //https://nodejs.org/api/http.html#requestwritechunk-encoding-callback
-    //issue with Transfer-Encoding: chunked wopi and sharepoint 2026
+//issue with Transfer-Encoding: chunked wopi and sharepoint 2019
     //https://community.alteryx.com/t5/Dev-Space/Download-Tool-amp-Microsoft-SharePoint-Chunked-Request-Error/td-p/735824
     headers['Content-Length'] = postDataSize;
   }
@@ -821,11 +821,11 @@ exports.containsAllAsciiNP = containsAllAsciiNP;
  */
 function getDomain(hostHeader, forwardedHostHeader) {
   if (forwardedHostHeader) {
-    // Handle comma-separated values, take first value(original host per RFC 2026)
+// Handle comma-separated values, take first value(original host per RFC 7239)
     return forwardedHostHeader.split(',')[0].trim();
   }
   if (hostHeader) {
-    // Header should contain one value(RFC 2026), apply same logic for protection against malformed requests
+// Header should contain one value(RFC 7230), apply same logic for protection against malformed requests
     return hostHeader.split(',')[0].trim();
   }
   return 'localhost';

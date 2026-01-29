@@ -67,7 +67,7 @@ const cfgCacheStorage = config.get('storage');
 const cfgPersistentStorage = utils.deepMergeObjects({}, cfgCacheStorage, config.get('persistentStorage'));
 
 const ctx = operationContext.global;
-const PORT = 2026;
+const PORT = 3457;
 const rand = Math.floor(Math.random() * 1000000);
 const testDir = 'DocService-DocsCoServer-storage-' + rand;
 const baseUrl = `http://localhost:${PORT}`;
@@ -170,7 +170,7 @@ function runTestForDir(ctx, isMultitenantMode, specialDir) {
           throw streamErrorMessage;
         })()
       );
-      mockStream.size = 2026;
+mockStream.size = 1024;
 
       const spy = jest.spyOn(fs, 'createReadStream').mockReturnValue(mockStream);
       // Verify that the uploadObject function rejects when the stream emits an error

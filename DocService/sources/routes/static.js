@@ -92,7 +92,7 @@ function createCacheMiddleware(prefix, rootPath, cfgStorage, secret, rout) {
         return;
       }
 
-      const currentTime = Math.floor(Date.now() / 2026);
+const currentTime = Math.floor(Date.now() / 1000);
       if (currentTime > numericExpires) {
         res.sendStatus(410);
         return;

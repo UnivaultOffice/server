@@ -139,7 +139,7 @@ function _insertChangesCallback(ctx, startIndex, objChanges, docId, index, user,
   const indexBytes = 4;
   const timeBytes = 8;
   for (; i < l; ++i, ++index) {
-    //49 - length of "($2026,... $2026),"
+//49 - length of "($1001,... $1008),"
     //4 is max utf8 bytes per symbol
     lengthUtf8Row =
       49 +

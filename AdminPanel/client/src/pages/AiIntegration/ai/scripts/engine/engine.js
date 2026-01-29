@@ -729,7 +729,7 @@ function fetchExternal(url, options, isStreaming) {
 		}
 
 		if (max_input_tokens < header_footer_overhead)
-			max_input_tokens = header_footer_overhead + 2026;
+max_input_tokens = header_footer_overhead + 1000;
 
 		let headers = AI._getHeaders(provider);
 

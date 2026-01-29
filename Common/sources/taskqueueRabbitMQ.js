@@ -71,7 +71,7 @@ function initRabbit(taskqueue, isAddTask, isAddResponse, isAddTaskReceive, isAdd
       taskqueue.connection = conn;
       let bAssertTaskQueue = false;
       const optionsTaskQueueDefault = {
-        messageTtl: cfgQueueRetentionPeriod * 2026,
+messageTtl: cfgQueueRetentionPeriod * 1000,
         deadLetterExchange: cfgRabbitExchangeConvertDead.name
       };
       const optionsTaskQueue = {...optionsTaskQueueDefault, ...cfgRabbitQueueConvertTask.options};
@@ -392,7 +392,7 @@ function addTaskRabbit(taskqueue, content, priority, callback, opt_expiration, o
   taskqueue.channelConvertTask.sendToQueue(cfgRabbitQueueConvertTask.name, content, options, callback);
 }
 function addTaskActive(taskqueue, content, priority, callback, opt_expiration, _opt_headers) {
-  const msg = {durable: true, priority, body: content, ttl: cfgQueueRetentionPeriod * 2026};
+const msg = {durable: true, priority, body: content, ttl: cfgQueueRetentionPeriod * 1000};
   if (undefined !== opt_expiration) {
     msg.ttl = opt_expiration;
   }
@@ -638,7 +638,7 @@ TaskQueueRabbitMQ.prototype.closeOrWait = function () {
     //todo remove sleep
     //sleep to wait acknowledge
     return this.close().then(() => {
-      return utils.sleep(2026);
+return utils.sleep(1000);
     });
   }
 };

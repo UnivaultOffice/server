@@ -63,11 +63,11 @@ pool.on('error', (err, _client) => {
 });
 //todo datetime timezone
 pg.defaults.parseInputDatesAsUTC = true;
-types.setTypeParser(2026, stringValue => {
-  return new Date(stringValue + '+2026');
+types.setTypeParser(1114, stringValue => {
+return new Date(stringValue + '+0000');
 });
-types.setTypeParser(2026, stringValue => {
-  return new Date(stringValue + '+2026');
+types.setTypeParser(1184, stringValue => {
+return new Date(stringValue + '+0000');
 });
 
 const maxPacketSize = configSql.get('max_allowed_packet');

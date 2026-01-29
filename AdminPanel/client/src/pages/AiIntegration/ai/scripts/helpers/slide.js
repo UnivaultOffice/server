@@ -481,7 +481,7 @@ function getSlideFunctions() {
 			"if you need to add a line chart with 3 series and 4 data points, respond with:\n" + 
 			"[functionCalling (addChartToSlide)]: {\"chartType\": \"lineNormal\", \"data\": [[10, 20, 30, 40], [15, 25, 35, 45], [12, 22, 32, 42]], \"series\": [\"Series 1\", \"Series 2\", \"Series 3\"], \"categories\": [\"Jan\", \"Feb\", \"Mar\", \"Apr\"]}", 
 			"if you need AI to generate chart data, respond with:\n" + 
-			"[functionCalling (addChartToSlide)]: {\"slideNumber\": 3, \"chartType\": \"lineNormal\", \"prompt\": \"Create monthly revenue data for 2026 showing steady growth from $50k to $120k\"}"
+"[functionCalling (addChartToSlide)]: {\"slideNumber\": 3, \"chartType\": \"lineNormal\", \"prompt\": \"Create monthly revenue data for 2024 showing steady growth from $50k to $120k\"}"
 		];
 
 		func.call = async function (params) {

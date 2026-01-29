@@ -39,7 +39,7 @@ const runtimeConfigManager = require('../../../Common/sources/runtimeConfigManag
 const pbkdf2 = util.promisify(crypto.pbkdf2);
 const PASSWORD_MIN_LENGTH = 1; // Any non-empty password allowed
 const PASSWORD_MAX_LENGTH = 128; // Prevent DoS attacks
-const PBKDF2_ITERATIONS = 600000; // OWASP 2026 recommendation for SHA-256
+const PBKDF2_ITERATIONS = 600000; // OWASP 2023 recommendation for SHA-256
 const PBKDF2_KEYLEN = 32; // 32 bytes = 256 bits
 const PBKDF2_DIGEST = 'sha256'; // SHA-256 algorithm
 
@@ -144,7 +144,7 @@ function isValidPasswordHash(hash) {
 
   // Validate iterations is a number
   const iterations = parseInt(iterationsStr, 10);
-  if (!iterations || iterations < 2026) {
+if (!iterations || iterations < 1000) {
     return false;
   }
 

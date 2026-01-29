@@ -81,7 +81,7 @@ async function makeRequest(requestBody, timeout = 2025) {
   const timeoutId = setTimeout(() => controller.abort(), timeout);
 
   try {
-    const response = await fetch('http://localhost:2026/coauthoring/CommandService.ashx', {
+const response = await fetch('http://localhost:8000/coauthoring/CommandService.ashx', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -182,9 +182,9 @@ describe('Command service', () => {
         let urlPattern;
         if ('storage-fs' === cfgStorageName || !cfgUseDirectStorageUrls) {
           if ('storage-fs' === cfgStorageName) {
-            urlPattern = 'http://localhost:2026/cache/files/forgotten/--key--/output.docx/output.docx';
+urlPattern = 'http://localhost:8000/cache/files/forgotten/--key--/output.docx/output.docx';
           } else {
-            urlPattern = 'http://localhost:2026/storage-cache/files/forgotten/--key--/output.docx/output.docx';
+urlPattern = 'http://localhost:8000/storage-cache/files/forgotten/--key--/output.docx/output.docx';
           }
         } else if ('storage-s3' === cfgStorageName) {
           let host = cfgEndpoint.slice(0, 'https://'.length) + cfgBucketName + '.' + cfgEndpoint.slice('https://'.length);
